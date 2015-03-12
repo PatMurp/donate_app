@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta charset="${_response_encoding}">
+        <link rel="stylesheet" media="screen" href="@{'/public/assets/css/bootstrap.min.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <script src="@{'/public/javascripts/jquery-1.10.2.js'}"></script>
+        <script src="@{'/public/assets/js/bootstrap.js'}"></script>
+        <script src="@{'/public/assets/js/bootstrap.min.js'}"></script>
+        #{get 'moreStyles' /}
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        #{get 'moreScripts' /}
+    </head>
+    <body>
+    <style>
+      body 
+      {
+         background-color: #d3e3f3;
+      }
+      </style>
+        #{doLayout /}
+        #{include "footer.html" /}
+    </body>
+</html>

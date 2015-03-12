@@ -1,0 +1,61 @@
+#{extends 'main.html' /}
+#{set title:'Signup to Donation' /}
+
+#{include 'nav/open.html'/}
+<li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+<li class="active"><a href="@{Accounts.signup}"><span class="glyphicon glyphicon-pencil"></span> Signup</a></li>
+<li><a href="@{Accounts.login}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+#{include 'nav/close.html' /}
+
+<div class="container">
+  #{ifErrors}
+  <div class="error">
+    <h2>Oops, please correct these errors</h2>
+  </div>
+  #{/ifErrors}
+</div>
+
+<div class="container">
+  <div class="col-lg-4">
+    <div class="well">
+    <h4>Join Donation Please fill in all fields</h4>
+      <form action="@{Accounts.register}" method="post">
+        <div class="form-horizontal">
+          <div class="form-group">
+          
+            <input id="firstName" type="text" name="firstName" placeholder="First Name:" value="${params.firstName}" class="#{errorClass 'firstName' /}"> 
+            <span class="error">#{error 'firstName' /}</span><br>
+            
+            <input  id="lastName" type="text" name="lastName" placeholder="Last Name:" value="${params.lastName}" class="#{errorClass 'lastName' /}" >
+            <span class="error">#{error 'lastName' /}</span><br>
+            
+            <input id="email" type="text" name="email" placeholder="Email:" value="${params.email}" class="#{errorClass 'email' /}">  
+            <span class="error">#{error 'email' /}</span><br>
+            
+            <input id="confirmEmail" type="text" name="confirmEmail" placeholder="Confirm email:" value="${params.confirmEmail}" class="#{errorClass 'confirmEmail' /}" > 
+            <span class="error">#{error 'confirmEmail' /}</span><br>
+            
+            <p>Password must be at least 8 charcters long, with at least one numeric digit, and one uppercase letter</p>
+            <input id="password" type="password" name="password" placeholder="Password:" value="${params.password}" class="#{errorClass 'password' /}">
+            <span class="error">#{error 'password' /}</span><br>
+            
+            <input id="age" type="number" name="age" placeholder="Age:" value="${params.age}" class="#{errorClass 'age' /}">
+            <span class="error">#{error 'age' /}</span><br>
+            
+            <input id="constituency" type="text" name="constituency" placeholder="Constituency:" value="${params.constituency}" class="#{errorClass 'constituency' /}" >
+            <span class="error">#{error 'constituency' /}</span><br>
+            
+            <textarea id="address" rows="4" cols="22" class="input-small" class="form-control" placeholder="Enter address here:" 
+            name="address" class="#{errorClass 'address' /}">${params.address}</textarea>
+            <span class="error">#{error 'address' /}</span>
+          </div>
+        </div>
+        <button class="btn btn-success">Submit</button>
+        <button type="button" class="btn btn-primary" onClick="window.location.reload()">Cancel</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <img src="/public/images/homer.png" alt="homer excited">
+  </div>
+</div>

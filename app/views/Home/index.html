@@ -1,0 +1,24 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+#{include 'nav/open.html'/}
+<li class="active"><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+<li><a href="@{Accounts.signup}"><span class="glyphicon glyphicon-pencil"></span> Signup</a></li>
+<li><a href="@{Accounts.login}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+<li><a href="@{AdminLogin.index}"><span class="glyphicon glyphicon-wrench"></span> Admin</a></li>
+#{include 'nav/close.html' /}
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <h2>Politics is the reality of life. Make a Donation!!</h2>
+      <p>Donate what you can now - No Bitcoins accepted! &nbsp&nbsp&nbsp
+      <a href="@{Accounts.signup}"><button class="btn btn-success">Signup</button></a>&nbsp&nbsp
+      <a href="@{Accounts.login}"><button class="btn btn-primary">login</button></a>
+      </p>
+        <img src="/public/images/Simpsons.png" alt="simpson family">
+    </div>
+  </div>
+</div>

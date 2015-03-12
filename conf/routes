@@ -1,0 +1,39 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# API - Users
+
+GET     /api/users                           UsersAPI.users
+GET     /api/users/{id}                      UsersAPI.user
+POST    /api/users                           UsersAPI.createUser
+DELETE  /api/users/{id}                      UsersAPI.deleteUser
+
+# API - Admin
+GET     /api/admins                          AdminAPI.admins
+GET     /api/admins/{id}                     AdminAPI.admin
+
+# API - Candidates
+GET     /api/candidates                      CandidatesAPI.candidates
+GET     /api/candidates/{id}                 CandidatesAPI.candidate
+POST    /api/candidates                      CandidatesAPI.createCandidate
+DELETE  /api/candidates                      CandidatesAPI.deleteCandidate
+
+# API - Donations
+
+GET     /api/users/{userId}/donations        DonationsAPI.donations
+GET     /api/users/{userId}/donations/{id}   DonationsAPI.donation
+POST    /api/users/{userId}/donations        DonationsAPI.createDonation
+DELETE  /api/users/{userId}/donations/{id}   DonationsAPI.deleteDonation
+
+# Home page
+GET     /                                       Home.index
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}

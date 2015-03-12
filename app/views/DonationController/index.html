@@ -1,0 +1,73 @@
+#{extends 'main.html' /} 
+#{set title:'Choose a Candidate' /} 
+
+#{include 'nav/open.html'/}
+<li class="active"><a href="@{DonationController.index}"><span class="glyphicon glyphicon-user"></span> Candidates</a></li>
+<li><a href="@{Accounts.editProfile}"><span class="glyphicon glyphicon-edit"></span> Edit Details</a></li>
+<li><a href="@{DonationController.renderReport}"><span class="glyphicon glyphicon-list"></span> Report</a></li>
+<li><a href="@{Accounts.logout}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+#{include 'nav/close.html' /}
+
+<div class="container">
+  <div class="col-lg-7">
+    <h4>Welcome ${user.firstName} select a candidate below and make a donation</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Make donation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          #{list items:candidates, as:'candidate'}
+          <td>${candidate.firstName}</td>
+          <td>${candidate.lastName}</td>
+          <td>${candidate.email}</td> 
+          <td> <a class="btn btn-info btn-mini" href="@{DonationController.donateTo(candidate.id)}">Donate</a> </td>         
+        </tr>           
+        #{/list}
+      </tbody>
+    </table>
+  </div>
+   <div class="col-lg-4">
+   <h4>Scroll through candidate images below</h4>
+     <div id="Carousel" class="carousel slide con-lg-4 col-offetset-2">
+  
+      <ol class="carousel-indicators">
+        <li data-target="Carousel" data-slide-to="0" class="active"></li>
+        <li data-target="Carousel" data-slide-to="1"></li>
+        <li data-target="Carousel" data-slide-to="2"></li>
+      </ol>
+    
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="/public/images/apu.png" class="img-responsive">
+        </div>
+        <div class="item">
+          <img src="/public/images/mary.png" class="img-responsive">
+        </div>
+        <div class="item">
+          <img src="/public/images/ned.png" class="img-responsive">
+        </div>
+      </div>
+    
+      <a class="left carousel-control" href="#Carousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a> <a class="right carousel-control" href="#Carousel"
+        data-slide="next"> <span
+        class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+

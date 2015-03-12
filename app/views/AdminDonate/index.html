@@ -1,0 +1,58 @@
+#{extends 'main.html' /} 
+#{set title:'Admin Home' /} 
+
+#{include 'nav/open.html'/}
+<li class="active"><a href="@{AdminDonate.index}"><span class="glyphicon glyphicon-home"></span> Admin Home</a></li>
+<li><a href="@{AdminDonate.donationReport}"><span class="glyphicon glyphicon-th-list"></span> Donation Report</a></li>
+<li><a href="@{AdminDonate.userReport}"><span class="glyphicon glyphicon-user"></span> User List</a></li>
+<li><a href="@{Accounts.logout}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+#{include 'nav/close.html' /}
+
+<div class="container">
+  <div class="col-lg-3">
+    <div class="well">
+      <h4>Add a Candidate</h4>
+        <form action="@{AdminDonate.register}" method="post">
+          <div class="form-horizontal">
+            <div class="form-group">
+              <input type="text" name="candidate.firstName" placeholder="First Name:" required><br>
+              <input type="text" name="candidate.lastName" placeholder="Last Name:" required><br>
+              <input type="email" name="candidate.email" placeholder="Email" required><br>
+              <textarea rows="4" cols="22" name="candidate.officeAddress" placeholder="Enter candidate office address here:"></textarea>
+            </div>
+          </div>
+          <button class="btn btn-success">Add</button>
+          <button type="button" class="btn btn-primary" onClick="window.location.reload()">Cancel</button>
+        </form>
+    </div>
+  </div>
+  <div class="col-lg-9">
+    <div class="well">
+    <h4>Candidate list</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Office Address</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          #{list items:candidates, as:'candidate'}
+            <td>${candidate.firstName}</td>
+            <td>${candidate.lastName}</td>
+            <td>${candidate.email}</td>
+            <td>${candidate.officeAddress}</td>
+            <td> <a class="btn btn-info btn-mini" href="@{AdminDonate.editCand(candidate.id)}">Edit</a> </td> 
+            <td> <a class="btn btn-danger btn-mini" href="@{AdminDonate.delete(candidate.id)}">Delete</a> </td> 
+          </tr>
+          #{/list}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+#{extends 'main.html' /} 
+#{set title:'Edit Candidate details' /} 
+
+#{include 'nav/open.html'/}
+<li><a href="@{AdminDonate.index}"><span class="glyphicon glyphicon-home"></span> Admin Home</a></li>
+<li class="active"><a href="@{AdminDonate.editCand}"><span class="glyphicon glyphicon-edit"></span> Edit Candidate</a></li>
+<li><a href="@{AdminDonate.donationReport}"><span class="glyphicon glyphicon-th-list"></span> Donation Report</a></li>
+<li><a href="@{AdminDonate.userReport}"><span class="glyphicon glyphicon-user"></span> User List</a></li>
+<li><a href="@{Accounts.logout}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+#{include 'nav/close.html' /}
+
+<div class="container">
+  <div class="col-lg-3">
+    <div class="well">
+    <h4>Edit Candidate Details</h4>
+    <form action="@{AdminDonate.changeCand()}" method="post">
+      <div class="form-horizontal">
+        <div class="form-group">
+          <label class="control-label">Name:</label><br> 
+          <input type="text" name="firstName" value="${candidate.firstName}"><br>
+          <label class="control-label">Surname:</label><br> 
+          <input type="text" name="lastName" value="${candidate.lastName}"><br>
+          <label class="control-label">Email:</label><br> 
+          <input type="text" name="email" value="${candidate.email}"><br>
+          <label class="control-label">Office Address:</label><br>
+          <textarea cols="22" rows="4" name="officeAddress">${candidate.officeAddress}</textarea>
+        </div>
+        <button class="btn btn-success">Edit Details</button>
+        <button type="button" class="btn btn-primary" onClick="window.location.reload()">Cancel</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>

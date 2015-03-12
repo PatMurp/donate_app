@@ -1,0 +1,42 @@
+#{extends 'main.html' /} 
+#{set title:'User List' /} 
+
+#{include 'nav/open.html'/}
+<li><a href="@{AdminDonate.index}"><span class="glyphicon glyphicon-home"></span> Admin Home</a></li>
+<li><a href="@{AdminDonate.donationReport}"><span class="glyphicon glyphicon-th-list"></span> Donation Report</a></li>
+<li class="active"><a href="@{AdminDonate.userReport}"><span class="glyphicon glyphicon-user"></span> User List</a></li>
+<li><a href="@{Accounts.logout}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+#{include 'nav/close.html' /}
+
+<div class="container">
+  <div class="col-lg-12">
+    <div class="well">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Surmane</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Constituency</th>
+            <th>Address</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+           #{list items:users, as:'user'}
+          <tr>
+            <td>${user.firstName}</td>
+            <td>${user.lastName}</td>
+            <td>${user.email}</td>
+            <td>${user.age}</td>
+            <td>${user.constituency}</td>
+            <td>${user.address}</td>
+            <td> <a class="btn btn-danger btn-mini" href="@{AdminDonate.deleteUser(user.id)}">Delete</a> </td>
+          </tr>
+          #{/list}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

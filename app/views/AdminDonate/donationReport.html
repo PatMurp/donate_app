@@ -1,0 +1,32 @@
+#{extends 'main.html' /} 
+#{set title:'Donation Report' /} 
+
+#{include 'nav/open.html'/}
+<li><a href="@{AdminDonate.index}"><span class="glyphicon glyphicon-home"></span> Admin Home</a></li>
+<li class="active"><a href="@{AdminDonate.donationReport}"><span class="glyphicon glyphicon-list"></span> Donation Report</a></li>
+<li><a href="@{AdminDonate.userReport}"><span class="glyphicon glyphicon-user"></span> User List</a></li>
+<li><a href="@{Accounts.logout}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+#{include 'nav/close.html' /}
+
+<div class="container">
+  <div class="col-lg-6">
+    <div class="well">
+      <table class="table">  
+        <thead>
+          <tr>
+            <th>Amount</th>
+            <th>Method Donated</th>
+          </tr>
+        </thead>
+        <tbody>
+           #{list items:donations, as:'donation'}
+          <tr>
+            <td>${donation.amount}</td>
+            <td>${donation.method}</td>
+          </tr>
+          #{/list}
+       </tbody>
+      </table>
+    </div>
+  </div>
+</div>

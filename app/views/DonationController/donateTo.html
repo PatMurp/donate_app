@@ -1,0 +1,54 @@
+#{extends 'main.html' /} 
+#{set title:'Donate' /} 
+
+#{include 'nav/open.html'/}
+<li><a href="@{DonationController.index}"><span class="glyphicon glyphicon-user"></span> Candidates</a></li>
+<li><a href="@{Accounts.editProfile}"><span class="glyphicon glyphicon-edit"></span> Edit Details</a></li>
+<li class="active"><a href="@{DonationController.index}"><span class="glyphicon glyphicon-euro"></span> Donate</a></li>
+<li><a href="@{DonationController.renderReport}"><span class="glyphicon glyphicon-list"></span> Report</a></li>
+<li><a href="@{Accounts.logout}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+#{include 'nav/close.html' /}
+
+<div class="container">
+  <div class="col-lg-3">
+    <div class="well">
+      <h4>Make a Donation to ${candidate.firstName}</h4>
+      <form action="@{DonationController.donate}" method="post">
+        <div class="control-group">
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <label class="control-label">Select an amount:</label> 
+            <select name="amountDonated">
+              <option value="50">&#128;50</option>
+              <option value="100">&#128;100</option>
+              <option value="1000" selected>&#128;1000</option>
+            </select>
+          </div>
+        </div>
+        <div class="radio">
+          <label> <input type="radio" name="methodDonated"
+            value="paypal" checked="checked"> 
+            Paypal
+          </label>
+        </div>
+        <div class="radio">
+          <label> <input type="radio" name="methodDonated"
+            value="direct"> 
+            Direct
+          </label>
+        </div>
+        <button class="btn btn-success">Donate</button>
+      </form>
+    </div>
+    <p>Percentage target achieved is ${progress}</p>
+    <div class="progress progress-success progress-striped active">
+      <div class="progress-bar" role="progressbar"  style="width: ${progress}"">
+       <span class="sr-only"></span>
+     </div>
+  </div>
+  </div>
+  <div>
+    <img src="/public/images/homer3.png" alt="homer">
+  </div>
+</div>

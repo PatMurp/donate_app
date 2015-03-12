@@ -1,0 +1,38 @@
+#{extends 'main.html' /} 
+#{set title:'Edit Details' /} 
+#{include 'nav/open.html'/}
+<li><a href="@{DonationController.index}"><span class="glyphicon glyphicon-user"></span> Candidates</a></li>
+<li class="active"><a href="@{Accounts.editProfile}"><span class="glyphicon glyphicon-edit"></span> Edit Details</a></li>
+<li><a href="@{DonationController.renderReport}"><span class="glyphicon glyphicon-list"></span> Report</a></li>
+<li><a href="@{Accounts.logout}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+#{include 'nav/close.html' /}
+
+<div class="container">
+  <div class="col-lg-3">
+    <div class="well">
+      <h4>Edit Details</h4>
+      <form action="@{Accounts.change()}" method="post">
+        <div class="form-horizontal">
+          <div class="form-group">
+            <label class="control-label">Name:</label><br> 
+            <input type="text" name="firstName" value="${user.firstName}"><br>
+            <label class="control-label">Surname:</label><br> 
+            <input type="text" name="lastName" value="${user.lastName}"><br>
+            <label class="control-label">Email:</label><br> 
+            <input type="text" name="email" value="${user.email}"><br>
+            <label class="control-label">Password:</label><br> 
+            <input type="text" name="password" value="${user.password}"><br>
+            <label class="control-label">Age:</label><br> 
+            <input type="number" name="age" value="${user.age}"><br>
+            <label class="control-label">Constituency:</label><br>
+            <input type="text" name="constituency" value="${user.constituency}"><br> 
+            <label class="control-label"> Address:</label><br>
+            <textarea cols="22" rows="4" name="address">${user.address}</textarea>
+          </div>
+          <button class="btn btn-success">Edit Details</button>
+          <button type="button" class="btn btn-primary" onClick="window.location.reload()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

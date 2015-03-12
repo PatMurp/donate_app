@@ -1,0 +1,38 @@
+#{extends 'main.html' /} 
+#{set title:'Donation Report' /}
+ 
+#{include 'nav/open.html'/}
+<li><a href="@{DonationController.index}"><span class="glyphicon glyphicon-euro"></span> Donate</a></li>
+<li><a href="@{Accounts.editProfile}"><span class="glyphicon glyphicon-edit"></span> Edit Details</a></li>
+<li class="active"><a href="@{DonationController.renderReport}"><span class="glyphicon glyphicon-th-list"></span> Report</a></li>
+<li><a href="@{Accounts.logout}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+#{include 'nav/close.html' /}
+
+<div class="container">
+  <div class="col-lg-3">
+    <img src="/public/images/homer4.jpeg" alt="homer">
+  </div>
+  <div class="col-lg-4">
+    <div class="well">
+      <table class="table">
+        <tr>
+          <th>Amount</th>
+          <th>Method Donated</th>
+          <!--  <th>Donated to</th>-->
+        </tr>
+        #{list items:donations, as:'donation'}
+        <tr>
+          <td>${donation.amount}</td>
+          <td>${donation.method}</td>
+          <!--  <tr>
+          #{list items:donationsTo, as:'donation'}
+            <td>${candidate.firstName}</td>
+          
+            </tr>
+          #{/list}
+        </tr>-->
+        #{/list}
+      </table>
+    </div>
+  </div>
+</div>

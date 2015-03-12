@@ -1,0 +1,41 @@
+#{extends 'main.html' /} 
+#{set title:'Admin Login' /} 
+
+#{include 'nav/open.html'/}
+<li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+<li class="active"><a href="@{AdminLogin.index}"><span class="glyphicon glyphicon-log-in"></span> Admin Login</a></li>
+#{include 'nav/close.html' /}
+
+<div class="container">
+  <div class="col-lg-6">
+    <div class="well">
+      <div class="text-danger">
+        <h3>Donation Administration Login Only!!!</h3>
+        <p>
+          <strong>WARNING!!!! UNAUTHORIZED ACCESS PROHIBITED</strong><br>
+          You must have authorized permission to access this area. All
+          actions are monitored, recorded, and reported By clicking on
+          the button below, you acknowledge that you have read and agree
+          to abide by Donation-Service policies and terms of use. All
+          communications and records of your use may be read and
+          recorded by this applications designers.
+        </p>
+      </div>
+      <h4>Admin Login</h4>
+      <form action="@{AdminLogin.authenticate}">
+        <div class="form-horizontal">
+          <div class="form-group">
+            <input type="text" name="userName" placeholder="User Name:"><br>
+            <input type="password" name="adminPassword"
+              placeholder="Password:">
+          </div>
+        </div>
+        <button class="btn btn-danger btn-lg">Login</button>
+      </form><br>
+      <a href="/">
+    <button class="btn btn-success btn-lg">Back</button>
+  </a>
+  
+    </div>
+  </div>
+</div>
